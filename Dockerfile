@@ -9,7 +9,12 @@ RUN pip install seaborn
 ENV TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0rc0-cp27-none-linux_x86_64.whl
 RUN pip install --ignore-installed $TF_BINARY_URL
 
+
 RUN pip install --upgrade Theano
+RUN apt-get update && apt-get install -y \
+  g++ \
+  python-dev 
+
 
 RUN pip install --upgrade keras
 
