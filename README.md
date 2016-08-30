@@ -1,14 +1,18 @@
-### A docker image for machine learning development with Python.
+### A docker image for machine learning development with Python 2.
 
 
 Included libs:
- * anaconda
+ * numpy, scipy, sklearn
  * seaborn
  * Keras
- * Theano
- * Tensorflow (cpu only)
+ * Tensorflow (gpu enabled)
 
 
 
 ### How to run it
-```docker run -v <path>:/notebooks -p 8888:8888 -p 6006:6006 -it misgod/machinelearning-dev jupyter```
+```docker run -v <path>:/notebooks -p 8888:8888 -p 6006:6006 -it misgod/machinelearning-dev```
+
+gpu-enabled
+```nvidia-docker run -v <path>:/notebooks -p 8888:8888 -p 6006:6006 -it misgod/machinelearning-dev```
+
+

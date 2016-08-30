@@ -1,34 +1,30 @@
-FROM continuumio/anaconda
+FROM tensorflow/tensorflow:latest-gpu
 
 MAINTAINER Sam Lee <misgod.tw@gmail.com>
 
-# plot
-RUN pip install seaborn
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
-# Deep Learning
-ENV TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0rc0-cp27-none-linux_x86_64.whl
-RUN pip install --ignore-installed $TF_BINARY_URL
+ENV KERAS_BACKEND tensorflow
 
+RUN pip install keras seaborn numpy scipy sklearn pandas 
 
-RUN pip install --upgrade Theano
-RUN apt-get update && apt-get install -y \
-  g++ \
-  python-dev 
+# Set up our notebook config.
+COPY jupyter_notebook_config.py /root/.jupyter/
 
 
-RUN pip install --upgrade keras
+# Jupyter has issues with being run directly:
+#   https://github.com/ipython/ipython/issues/7062
+# We just add a little wrapper script.
+COPY run_jupyter.sh /
 
-
-# Add runner script
-COPY runner.sh /bin/runner.sh
-RUN chmod +x /bin/runner.sh
 
 # TensorBoard
 EXPOSE 6006
 # IPython
 EXPOSE 8888
 
-WORKDIR /notebooks
 VOLUME /notebooks
+WORKDIR "/notebooks"
 
-ENTRYPOINT ["/bin/runner.sh"]
+
+CMD ["/run_jupyter.sh"]
