@@ -1,5 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu
-
+FROM tensorflow/tensorflow:nightly-gpu
 MAINTAINER Sam Lee <misgod.tw@gmail.com>
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
