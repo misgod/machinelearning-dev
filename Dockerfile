@@ -5,7 +5,7 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 ENV KERAS_BACKEND tensorflow
 
-RUN pip install keras seaborn numpy scipy sklearn pandas 
+RUN pip install keras seaborn  sklearn pandas xgboost pillow h5py
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
