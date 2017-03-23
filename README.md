@@ -1,4 +1,4 @@
-### A docker image for machine learning development with Python 2.
+### A docker image for machine learning development with Python 3.
 
 
 Included libs:
