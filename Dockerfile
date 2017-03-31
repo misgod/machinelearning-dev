@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:nightly-gpu-py3
+FROM tensorflow/tensorflow:nightly-py3
 MAINTAINER Sam Lee <misgod.tw@gmail.com>
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
